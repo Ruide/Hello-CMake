@@ -10,8 +10,9 @@ add_executable("${PROJECT_NAME}" "Main.cpp") # add an executable into cmake, nee
 install(TARGETS "${PROJECT_NAME}" DESTINATION bin) # bin is relative path to cmake install prefix.<-- ${CMAKE_INSTALL_PREFIX}/bin
 install(FILES "Main.cpp" DESTINATION src) # src is relative path to cmake src prefix.<-- ${CMAKE_INSTALL_PREFIX}/src
 
-include(CTest)
+include(CTest) # in order to use add_test
 
 add_test("test1" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}") # test1 passes if process return 0. CMAKE_CURRENT_BINARY_DIR points to current build dir
 # add_test("test2" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" "someparameter") 
 
+include(CPack) # make package. contains /bin and /src. depends on install()
